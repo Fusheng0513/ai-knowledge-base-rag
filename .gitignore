@@ -1,0 +1,29 @@
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+
+# 虚拟环境
+venv/
+env/
+.venv/
+
+# IDE 配置
+.vscode/
+.idea/
+
+# 环境变量
+.env
+
+# 向量库文件
+my_knowledge_base/
+*.faiss
+
+# 临时文件
+test_*.csv
+temp_*
+*.log
+
+# 系统文件
+.DS_Store
+Thumbs.db
