@@ -34,7 +34,7 @@ def load_documents(source: str) -> List[Document]:
                 docs = loader.load()
             elif suffix in ['.xlsx', '.xls']:
                 engine = 'openpyxl' if suffix == '.xlsx' else 'xlrd'
-                df = pd.read_excel(source_path, engine=engine)
+                df = pd.read_excel(source_path, engine=engine) #输出DataFrame文件
                 docs = []
                 for idx, row in df.iterrows():
                     row_text = "，".join([f"{col}: {row[col]}" for col in df.columns])
@@ -80,14 +80,14 @@ def load_documents(source: str) -> List[Document]:
 # ========== 1.1. 网页加载器 ==========
 def crawl_website(url: str) -> List[Document]:
     try:
-        loader = WebBaseLoader(url)
+        loader = WebBaseLoader(url) #requests.Response对象
         docs = loader.load()
         print(f"成功爬取 {len(docs)} 个文档块")
         for doc in docs:
             doc.metadata["source_url"] = url
         return docs
     except Exception as e:
-        print(f"爬取失败: {e}")
+        print(f"爬取失败: {e}") 
         return []
 
 # ========== 2. 文本分块 ==========

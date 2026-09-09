@@ -2,7 +2,7 @@ import pytest
 import tempfile
 from pathlib import Path
 from langchain_core.documents import Document
-from smart_document_loader import load_documents, split_documents, clean_chunks
+from main import load_documents, split_documents, clean_chunks
 
 # ========== 测试用例1：测试文档加载 ==========
 def test_load_single_csv():
@@ -17,7 +17,7 @@ def test_load_single_csv():
     
     # 断言：验证结果
     assert len(docs) > 0, "应该至少加载到一个文档"
-    assert all(isinstance(doc, Document) for doc in docs)
+    assert all(isinstance(doc, Document) for doc in docs) # 检查每个文档是否都是 Document 类型
     assert "张三" in docs[0].page_content or "李四" in docs[0].page_content
     
     # 清理
